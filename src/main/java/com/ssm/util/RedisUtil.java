@@ -17,6 +17,10 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtil {
     private RedisTemplate<Serializable, Object> redisTemplate;
 
+    public void setRedisTemplate(RedisTemplate<Serializable, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
     /**
      * 批量删除对应的value
      *
@@ -93,10 +97,10 @@ public class RedisUtil {
     }
 
     /**
-     * 写入缓存
-     *
+     * 写入缓存（设置失效时间）
      * @param key
      * @param value
+     * @param expireTime 失效时间
      * @return
      */
     public boolean set(final String key, Object value, Long expireTime) {
@@ -112,7 +116,4 @@ public class RedisUtil {
         return result;
     }
 
-    public void setRedisTemplate(RedisTemplate<Serializable, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
 }

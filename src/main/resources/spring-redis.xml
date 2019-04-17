@@ -53,6 +53,10 @@
         </property>
     </bean>
 
+    <bean id="redisUtil" class="com.ssm.util.RedisUtil">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
+
     <!-- 缓存拦截器配置 -->
     <bean id="methodCacheInterceptor" class="com.ssm.interceptor.MethodCacheInterceptor">
         <property name="redisUtil" ref="redisUtil"/>
@@ -70,10 +74,6 @@
                 <value></value>
             </list>
         </property>
-    </bean>
-
-    <bean id="redisUtil" class="com.ssm.util.RedisUtil">
-        <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
 
     <!--配置切面拦截方法 -->
